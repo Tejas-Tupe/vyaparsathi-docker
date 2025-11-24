@@ -1,0 +1,54 @@
+/* src/styles/global.css (Updated) */
+
+@import './variables.css';
+
+/* Hide arrows (Chrome, Safari, Edge, Opera) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide arrows (Firefox) */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+a {
+  text-decoration: none;
+}
+body { 
+  /* Use the custom font and background defined here */
+  font-family: 'Nunito Sans', system-ui, Avenir, Helvetica, Arial, sans-serif; 
+  background: #f5f7fa; 
+  color: #111827; 
+  
+  /* Ensure these are here and ONLY here */
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden; 
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500; 
+}
+
+.container {
+  max-width: 1280px; /* Constraints the max width */
+  margin-left: auto;
+  margin-right: auto; /* Centers the container horizontally */
+  
+  /* Add padding to prevent content from touching the screen edges */
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  
+  width: 100%; 
+}

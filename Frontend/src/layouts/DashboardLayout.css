@@ -1,0 +1,15 @@
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+}
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 240px; /* match sidebar width */
+}
+.content-area {
+  padding: 2rem;
+  background: #fff;
+  min-height: calc(100vh - 60px - 50px); /* header and footer heights */
+}

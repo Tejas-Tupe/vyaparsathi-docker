@@ -1,0 +1,158 @@
+/* src/components/common/common.css (AUDITED AND CLEANED) */
+
+@import '../../styles/variables.css';
+
+/* ================== Button Styles ================== */
+
+.common-btn,
+button.common-btn {
+  border: none;
+  cursor: pointer;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* disabled button */
+.common-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ================= PRIMARY (Default) ================= */
+
+.common-btn-primary,
+button.common-btn-primary {
+  background: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.common-btn-primary:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--primary-color) 90%, black);
+  transform: translateY(-1px);
+}
+
+/* ================= SECONDARY / OUTLINE ================= */
+
+.common-btn-secondary,
+button.common-btn-secondary {
+  background: transparent;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+}
+
+.common-btn-secondary:hover:not(:disabled) {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+/* ================= DANGER (DELETE / WARNING) ================= */
+
+.common-btn-danger,
+button.common-btn-danger {
+  background: #e63946;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(230, 57, 70, 0.25);
+}
+
+.common-btn-danger:hover:not(:disabled) {
+  background: color-mix(in srgb, #e63946 90%, black);
+  transform: translateY(-1px);
+}
+
+
+/* ================== Input Styles ================== */
+
+.input-field-container {
+  margin-bottom: 1rem;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.common-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--text-color);
+  background-color: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.common-input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* ================== Modal Styles ================== */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transform: scale(0.95);
+  animation: modal-open 0.3s forwards ease-out;
+}
+
+
+@keyframes modal-open {
+  to { transform: scale(1); }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}

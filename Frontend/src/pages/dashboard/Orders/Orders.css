@@ -1,0 +1,64 @@
+.orders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.4rem;
+}
+
+/* Wrapper for action buttons */
+.orders-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Prevent buttons from shrinking */
+.orders-actions > * {
+  flex-shrink: 0;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .orders-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .orders-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+.orders-header button {
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.orders-container {
+  padding: 20px;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  font-size: 0.95rem;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #d8cccc;
+}
+
+.orders-table thead th {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+}
+
+.orders-table tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}

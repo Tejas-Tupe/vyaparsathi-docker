@@ -1,0 +1,35 @@
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  font-size: 0.95rem;
+}
+
+.products-table th,
+.products-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #d8cccc;
+}
+
+.products-table thead th {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+}
+
+.products-table tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* Header + actions holder */
+.table-header-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table-actions {
+  display: flex;
+  gap: 8px;
+}

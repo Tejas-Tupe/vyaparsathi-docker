@@ -1,0 +1,12 @@
+/* index.css (Should only contain the original boilerplate and theme settings) */
+
+:root {
+  /* Keep only the theme/color-scheme variables here */
+  color-scheme: light dark;
+  /* ... (rest of the :root styles) ... */
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    /* ... color variables here ... */
+  }
+}

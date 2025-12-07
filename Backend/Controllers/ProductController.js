@@ -1,6 +1,6 @@
-import Product from "../Config/Database/Models/Productmodel.js";
-import Order from "../Config/Database/Models/Ordermodel.js";
-import mongoose from "mongoose";
+import Product from '../Config/Database/Models/Productmodel.js';
+import Order from '../Config/Database/Models/Ordermodel.js';
+import mongoose from 'mongoose';
 
 export const getMyProducts = async (req, res) => {
   try {
@@ -8,12 +8,13 @@ export const getMyProducts = async (req, res) => {
     const products = await Product.find({ user: userId });
     res.status(200).json({ products });
   } catch (err) {
-    console.error("Fetch products error:", err);
-    res.status(500).json({ error: "Server error while fetching products." });
+    console.error('Fetch products error:', err);
+    res.status(500).json({ error: 'Server error while fetching products.' });
   }
 };
 
-export const getProductOverview = async (req, res) => { // old routes getfilteredproducts and getproductstatsreplaced with this new
+export const getProductOverview = async (req, res) => {
+  // old routes getfilteredproducts and getproductstatsreplaced with this new
   try {
     const userId = req.user;
 
@@ -31,8 +32,8 @@ export const getProductOverview = async (req, res) => { // old routes getfiltere
           {
             $group: {
               _id: null,
-              totalSold: { $sum: "$quantity" },
-              totalRevenue: { $sum: "$total" },
+              totalSold: { $sum: '$quantity' },
+              totalRevenue: { $sum: '$total' },
             },
           },
         ]);
@@ -52,8 +53,8 @@ export const getProductOverview = async (req, res) => { // old routes getfiltere
 
     res.status(200).json({ products: productsWithStats });
   } catch (err) {
-    console.error("Product overview fetch error:", err);
-    res.status(500).json({ error: "Failed to fetch product overview" });
+    console.error('Product overview fetch error:', err);
+    res.status(500).json({ error: 'Failed to fetch product overview' });
   }
 };
 
@@ -86,7 +87,7 @@ export const getOverviewStats = async (req, res) => {
     // Low Stock Products
     const lowStockCount = await Product.countDocuments({
       user: userId,
-      $expr: { $lte: ["$quantity", "$lowStockThreshold"] },
+      $expr: { $lte: ['$quantity', '$lowStockThreshold'] },
     });
 
     //  Month-over-Month Growth
@@ -97,27 +98,26 @@ export const getOverviewStats = async (req, res) => {
       {
         $match: {
           user: new mongoose.Types.ObjectId(String(userId)),
-          $expr: { $eq: [{ $month: "$createdAt" }, currentMonth + 1] },
+          $expr: { $eq: [{ $month: '$createdAt' }, currentMonth + 1] },
         },
       },
-      { $group: { _id: null, total: { $sum: "$total" } } },
+      { $group: { _id: null, total: { $sum: '$total' } } },
     ]);
 
     const [prevMonthRevenue] = await Order.aggregate([
       {
         $match: {
           user: new mongoose.Types.ObjectId(String(userId)),
-          $expr: { $eq: [{ $month: "$createdAt" }, prevMonth + 1] },
+          $expr: { $eq: [{ $month: '$createdAt' }, prevMonth + 1] },
         },
       },
-      { $group: { _id: null, total: { $sum: "$total" } } },
+      { $group: { _id: null, total: { $sum: '$total' } } },
     ]);
 
     const momGrowth =
       prevMonthRevenue && prevMonthRevenue.total > 0
-        ? (((currentMonthRevenue?.total || 0) - prevMonthRevenue.total) /
-          prevMonthRevenue.total) *
-        100
+        ? (((currentMonthRevenue?.total || 0) - prevMonthRevenue.total) / prevMonthRevenue.total) *
+          100
         : 0;
 
     const emptyStockCount = await Product.countDocuments({
@@ -127,7 +127,7 @@ export const getOverviewStats = async (req, res) => {
     // Empty Stocks
 
     // Count distinct product categories for this user
-    const categories = await Product.distinct("category", { user: userId });
+    const categories = await Product.distinct('category', { user: userId });
     const categoryCount = categories.length;
 
     return res.status(200).json({
@@ -143,40 +143,39 @@ export const getOverviewStats = async (req, res) => {
         lowStockCount: lowStockCount,
         emptyStockCount: emptyStockCount,
         momGrowth: momGrowth.toFixed(2),
-        categories: categoryCount
+        categories: categoryCount,
       },
     });
   } catch (error) {
-    console.error("Error fetching overview stats:", error);
+    console.error('Error fetching overview stats:', error);
     res.status(500).json({
       success: false,
-      message: "Failed to load overview stats",
+      message: 'Failed to load overview stats',
     });
   }
 };
 
 export const deleteProduct = async (req, res) => {
   try {
-    const userId = req.user;      
+    const userId = req.user;
     const productId = req.params.id;
 
     if (!productId) {
-      return res.status(400).json({ error: "Product ID is required." });
+      return res.status(400).json({ error: 'Product ID is required.' });
     }
 
     // Check if product belongs to user
     const product = await Product.findOne({ _id: productId, user: userId });
 
     if (!product) {
-      return res.status(404).json({ error: "Product not found or unauthorized." });
+      return res.status(404).json({ error: 'Product not found or unauthorized.' });
     }
 
     await product.deleteOne();
 
-    return res.status(200).json({ message: "Product deleted successfully." });
+    return res.status(200).json({ message: 'Product deleted successfully.' });
   } catch (err) {
-    console.error("Delete product error:", err);
-    return res.status(500).json({ error: "Failed to delete product." });
+    console.error('Delete product error:', err);
+    return res.status(500).json({ error: 'Failed to delete product.' });
   }
 };
-

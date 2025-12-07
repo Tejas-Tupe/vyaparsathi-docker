@@ -22,7 +22,7 @@ const ChangePassword = () => {
       const success = await changePassword(
         oldPassword,
         newPassword,
-        confirmPassword
+        confirmPassword,
       );
 
       // Always redirect after 3 seconds (success or failure)

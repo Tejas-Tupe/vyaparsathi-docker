@@ -1,19 +1,19 @@
-import React from 'react';
-import './common.css'; // Global styles for common components
+import React from "react";
+import "./common.css"; // Global styles for common components
 
 const Button = ({
   children,
   onClick,
-  type = 'button',
-  variant = 'primary',
+  type = "button",
+  variant = "primary",
   loading = false,
-  className = '',
+  className = "",
   disabled = false,
   auto = false,
   text,
   ...rest
 }) => {
-  const baseClass = 'common-btn';
+  const baseClass = "common-btn";
   const buttonClass = `${baseClass} ${baseClass}-${variant} ${className}`;
 
   if (auto) {
@@ -25,7 +25,7 @@ const Button = ({
         onClick={onClick}
         {...rest}
       >
-        {loading ? 'Loading...' : text}
+        {loading ? "Loading..." : text}
       </button>
     );
   }
@@ -42,6 +42,5 @@ const Button = ({
     </button>
   );
 };
-
 
 export default Button;

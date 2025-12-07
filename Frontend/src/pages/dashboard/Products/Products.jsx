@@ -12,7 +12,7 @@ const Products = () => {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }).then((res) => res.json()),
-    []
+    [],
   );
 
   const [products, setProducts] = useState([]);
@@ -21,8 +21,8 @@ const Products = () => {
     const res = await fetch(`${PRODUCT_ROUTES.DELETE_PRODUCT}/${productId}`, {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-      }
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
     });
 
     const data = await res.json();

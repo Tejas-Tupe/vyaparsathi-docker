@@ -3,8 +3,8 @@ import axios from "axios";
 import Modal from "../../../components/common/Modal.jsx";
 import Button from "../../../components/common/Button.jsx";
 import InputField from "../../../components/common/InputField.jsx";
-import '../Forms.css'
-import { PRODUCT_ROUTES} from "../../../api/ApiRoutes.js";
+import "../Forms.css";
+import { PRODUCT_ROUTES } from "../../../api/ApiRoutes.js";
 import { toast } from "react-toastify";
 
 const RefillStock = ({ isOpen, onClose }) => {
@@ -58,7 +58,10 @@ const RefillStock = ({ isOpen, onClose }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm((p) => ({ ...p, [name]: name === "quantity" || name === "price" ? Number(value) : value }));
+    setForm((p) => ({
+      ...p,
+      [name]: name === "quantity" || name === "price" ? Number(value) : value,
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -77,7 +80,12 @@ const RefillStock = ({ isOpen, onClose }) => {
         // your backend refill route (uses PRODUCT_ROUTES.REFILL_STOCK in your ApiRoutes)
         PRODUCT_ROUTES.REFILL_STOCK,
         { productId, quantity, price },
-        { headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" } }
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        },
       );
 
       toast.success(res.data?.message || "Stock refilled successfully");
@@ -104,10 +112,15 @@ const RefillStock = ({ isOpen, onClose }) => {
             onChange={handleProductChange}
             required
           >
-            <option value="">{loadingProducts ? "Loading..." : "Choose product"}</option>
+            <option value="">
+              {loadingProducts ? "Loading..." : "Choose product"}
+            </option>
             {products.map((p) => (
               <option key={p._id} value={p._id}>
-                {p.name} {typeof p.quantity !== "undefined" ? `(${p.quantity} left)` : ""}
+                {p.name}{" "}
+                {typeof p.quantity !== "undefined"
+                  ? `(${p.quantity} left)`
+                  : ""}
               </option>
             ))}
           </select>
@@ -137,7 +150,12 @@ const RefillStock = ({ isOpen, onClose }) => {
           <Button type="submit" variant="primary" disabled={submitting}>
             {submitting ? "Saving..." : "Refill Stock"}
           </Button>
-          <Button variant="secondary" onClick={onClose} type="button" disabled={submitting}>
+          <Button
+            variant="secondary"
+            onClick={onClose}
+            type="button"
+            disabled={submitting}
+          >
             Cancel
           </Button>
         </div>

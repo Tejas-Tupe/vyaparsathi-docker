@@ -1,11 +1,13 @@
-import React from 'react';
-import FounderImg from '../../../assets/founder.jpg';
-import './FounderSection.css';
+import React from "react";
+import FounderImg from "../../../assets/founder.jpg";
+import "./FounderSection.css";
 
 const FounderSection = () => {
   return (
     <section className="founder" aria-labelledby="founder-heading">
-      <h2 id="founder-heading" className="founder-title">About the Founder</h2>
+      <h2 id="founder-heading" className="founder-title">
+        About the Founder
+      </h2>
 
       <div className="founder-content">
         {/* Left Side — Text */}
@@ -15,14 +17,18 @@ const FounderSection = () => {
 
           <p className="founder-desc">
             I’m a Software Engineering student passionate about building
-            scalable, impactful digital products. I created <strong>Vyaparsathi </strong> 
-            to help small businesses handle inventory, billing, and customers easily.
+            scalable, impactful digital products. I created{" "}
+            <strong>Vyaparsathi </strong>
+            to help small businesses handle inventory, billing, and customers
+            easily.
           </p>
 
           <p className="founder-desc">
-            I followed complete <strong>SDLC practices</strong>, structured it using 
-            <strong> MVC architecture</strong>, integrated <strong>JWT-based authentication</strong>,
-            and deployed via <strong>Dockerized CI/CD</strong> on the cloud for scalability.
+            I followed complete <strong>SDLC practices</strong>, structured it
+            using
+            <strong> MVC architecture</strong>, integrated{" "}
+            <strong>JWT-based authentication</strong>, and deployed via{" "}
+            <strong>Dockerized CI/CD</strong> on the cloud for scalability.
           </p>
         </div>
 

@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
-import StatsCard from '../../components/home/StatsCard.jsx';
-import useFetch from '../../hooks/useFetch.js';
-import { PRODUCT_ROUTES } from '../../api/ApiRoutes.js';
-import QuickActions from '../../components/common/Quickactions.jsx';
+import React, { useState } from "react";
+import StatsCard from "../../components/home/StatsCard.jsx";
+import useFetch from "../../hooks/useFetch.js";
+import { PRODUCT_ROUTES } from "../../api/ApiRoutes.js";
+import QuickActions from "../../components/common/Quickactions.jsx";
 
 const Overview = () => {
   const { data, loading, error } = useFetch(
-    () => fetch(PRODUCT_ROUTES.OVERVIEW, {
-      headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json',
-      },
-    }).then(res => res.json()),
-    []
+    () =>
+      fetch(PRODUCT_ROUTES.OVERVIEW, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
+      }).then((res) => res.json()),
+    [],
   );
   console.log(data);
   // safe defaults
@@ -22,16 +23,16 @@ const Overview = () => {
         revenueToday: data.summary?.revenueToday ?? 0,
         productCount: data.summary?.activeProducts ?? 0,
         categories: data.quickStats?.categories ?? 0,
-        growth: data.quickStats?.momGrowth ?? '0%',
+        growth: data.quickStats?.momGrowth ?? "0%",
         lowStockCount: data.quickStats.lowStockCount ?? 0,
-        emptyStockCount: data.quickStats.emptyStockCount ?? 0
+        emptyStockCount: data.quickStats.emptyStockCount ?? 0,
       }
     : {
-        ordersToday: '',
-        revenueToday: '',
-        productCount: '',
-        categories: '',
-        growth: '',
+        ordersToday: "",
+        revenueToday: "",
+        productCount: "",
+        categories: "",
+        growth: "",
       };
   return (
     <div className="dashboard-overview container">
@@ -61,19 +62,48 @@ const Overview = () => {
 
         {loading && <p>Loading stats...</p>}
         {error && (
-          <p style={{ color: 'var(--primary-color)' }}>
-            Failed to load live stats, Check your internet connection or try to reload site.
+          <p style={{ color: "var(--primary-color)" }}>
+            Failed to load live stats, Check your internet connection or try to
+            reload site.
           </p>
         )}
 
         <div className="stats-grid">
-          <StatsCard title="Orders Today" value={stats.ordersToday} subtitle="New orders placed today" />
-          <StatsCard title="Revenue Today" value={stats.revenueToday} subtitle="Collected (INR)" />
-          <StatsCard title="Products" value={stats.productCount} subtitle="Active product SKUs" />
-          <StatsCard title="Categories" value={stats.categories} subtitle="Distinct product categories" />
-          <StatsCard title="MoM Growth" value={stats.growth} subtitle="Month-over-month" />
-          <StatsCard title="Low Stocks" value={stats.lowStockCount} subtitle="Low Stocks" />
-          <StatsCard title="Empty Stocks" value={stats.emptyStockCount} subtitle="Empty Stocks" />
+          <StatsCard
+            title="Orders Today"
+            value={stats.ordersToday}
+            subtitle="New orders placed today"
+          />
+          <StatsCard
+            title="Revenue Today"
+            value={stats.revenueToday}
+            subtitle="Collected (INR)"
+          />
+          <StatsCard
+            title="Products"
+            value={stats.productCount}
+            subtitle="Active product SKUs"
+          />
+          <StatsCard
+            title="Categories"
+            value={stats.categories}
+            subtitle="Distinct product categories"
+          />
+          <StatsCard
+            title="MoM Growth"
+            value={stats.growth}
+            subtitle="Month-over-month"
+          />
+          <StatsCard
+            title="Low Stocks"
+            value={stats.lowStockCount}
+            subtitle="Low Stocks"
+          />
+          <StatsCard
+            title="Empty Stocks"
+            value={stats.emptyStockCount}
+            subtitle="Empty Stocks"
+          />
         </div>
       </section>
 

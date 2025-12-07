@@ -6,13 +6,15 @@
 
 Across rural and semi-urban India, thousands of micro and small enterprises still operate using traditional, manual methods—recording sales on paper, maintaining mental stock logs, and lacking any form of structured data management. This creates friction, errors, and missed growth opportunities.
 
-**Vyaparsathi** is built with a singular mission:  
+**Vyaparsathi** is built with a singular mission:
+
 > To **digitally enable grassroots entrepreneurs** and help them manage their businesses with ease, efficiency, and clarity — all without technical knowledge.
 
 We envisioned a product that is:
-- **Affordable** for all tiers of micro-businesses  
-- **Accessible** across devices and geographies  
-- **Simple yet powerful**, designed for real-world rural use cases  
+
+- **Affordable** for all tiers of micro-businesses
+- **Accessible** across devices and geographies
+- **Simple yet powerful**, designed for real-world rural use cases
 
 It is built for the **Indian market** — from Kirana stores to small hardware shops — enabling them to step confidently into the digital age.
 
@@ -22,10 +24,11 @@ It is built for the **Indian market** — from Kirana stores to small hardware s
 
 We followed a clean, full-stack development methodology using modern web technologies. With a focus on scalability, security, and simplicity, the application was crafted from the ground up in two separate codebases:
 
-- A **dark-themed, responsive frontend** built with **React.js (Vite)**  
+- A **dark-themed, responsive frontend** built with **React.js (Vite)**
 - A **secure, modular backend** using **Node.js with Express and MongoDB (Database)**
 
 Key development highlights:
+
 - RESTful API design with efficient data modeling
 - Context API for global state (Auth, Profile, etc.)
 - Protected routes using JWT-based authentication & authorization
@@ -51,6 +54,7 @@ Like any real-world product journey, Vyaparsathi's development wasn't without hu
 ## 🛠️ Tech Stack
 
 ### 🔮 Frontend:
+
 - React.js (with Vite)
 - Vanilla CSS (with custom dark theme)
 - React Router DOM
@@ -59,6 +63,7 @@ Like any real-world product journey, Vyaparsathi's development wasn't without hu
 - Responsive Design (Mobile/Desktop)
 
 ### 🔧 Backend:
+
 - Node.js with Express.js
 - MongoDB with Mongoose ODM
 - JSON Web Tokens (JWT) for route protection
@@ -72,18 +77,19 @@ Like any real-world product journey, Vyaparsathi's development wasn't without hu
 ## 📁 Project Structure
 
 ### Backend:
-- `routes/` – API route definitions  
-- `controllers/` – Business logic handling  
-- `models/` – MongoDB schemas  
-- `middleware/` – Auth & error handling  
-- `index.js` – Entry point  
+
+- `routes/` – API route definitions
+- `controllers/` – Business logic handling
+- `models/` – MongoDB schemas
+- `middleware/` – Auth & error handling
+- `index.js` – Entry point
 
 ---
 
 ## 🌍 Live Deployment
 
 - **Link:** [Vyaparsathi](https://vyaparsathi-frontend.onrender.com)
-  
+
 ---
 
 ## 🛡️ Uptime Monitoring
@@ -114,9 +120,9 @@ This setup ensures the app remains stable and responsive for users at all times 
 
 This journey would not have been possible without:
 
-- 🙏 Local entrepreneurs in **Marathwada** who inspired the need for Vyaparsathi  
-- 🤖 A huge shoutout to **ChatGPT (by OpenAI)** – my coding assistant, debugger, and brainstorming buddy through every feature  
-- 🙌 The developer community and open-source contributors  
+- 🙏 Local entrepreneurs in **Marathwada** who inspired the need for Vyaparsathi
+- 🤖 A huge shoutout to **ChatGPT (by OpenAI)** – my coding assistant, debugger, and brainstorming buddy through every feature
+- 🙌 The developer community and open-source contributors
 
 ---
 
@@ -125,6 +131,7 @@ This journey would not have been possible without:
 Have an idea or want to contribute?
 
 I'm open to collaboration for:
+
 - Product enhancements
 - UI/UX design upgrades
 - Real-world testing in rural markets
@@ -134,7 +141,7 @@ I'm open to collaboration for:
 
 ## 🧑‍💻 Final Product Proudly Developed & Maintained By
 
-#  **Tejas Tupe**
+# **Tejas Tupe**
 
 `tupetejas265@gmail.com | https://www.linkedin.com/in/tejastupe | https://github.com/Tejas-Tupe`
 

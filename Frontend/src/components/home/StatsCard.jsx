@@ -1,6 +1,6 @@
 // src/components/home/StatsCard.jsx
-import React from 'react'
-import '../../pages/landing/home.css'
+import React from "react";
+import "../../pages/landing/home.css";
 
 const StatsCard = ({ title, value, subtitle }) => {
   return (
@@ -9,7 +9,7 @@ const StatsCard = ({ title, value, subtitle }) => {
       <div className="stats-title">{title}</div>
       {subtitle && <div className="stats-sub">{subtitle}</div>}
     </div>
-  )
-}
+  );
+};
 
-export default StatsCard
+export default StatsCard;

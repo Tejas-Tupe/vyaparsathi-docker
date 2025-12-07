@@ -1,8 +1,8 @@
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import OrderPuncher from '../../pages/dashboard/Orders/OrdersPuncher.jsx';
-import AddStockModal from '../../pages/dashboard/Stocks/AddStock.jsx';
+import OrderPuncher from "../../pages/dashboard/Orders/OrdersPuncher.jsx";
+import AddStockModal from "../../pages/dashboard/Stocks/AddStock.jsx";
 import RefillStock from "../../pages/dashboard/Stocks/RefillStock.jsx";
 
 const QuickActions = () => {
@@ -12,9 +12,8 @@ const QuickActions = () => {
   const [isAddStockOpen, setAddStockOpen] = useState(false);
   const [isRefillOpen, setRefillOpen] = useState(false);
 
-
   return (
-    <div >
+    <div>
       {/* Heading First */}
       <h2 className="section-heading">Quick Actions</h2>
 
@@ -30,7 +29,12 @@ const QuickActions = () => {
           Create Order
         </Button>
 
-        <Button variant="secondary" onClick={() => {setRefillOpen(true)}}>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            setRefillOpen(true);
+          }}
+        >
           Refill Stock
         </Button>
 
@@ -40,9 +44,15 @@ const QuickActions = () => {
       </div>
 
       {/* Order Puncher Modal */}
-      <OrderPuncher isOpen={isOrderOpen} onClose={() => setIsOrderOpen(false)} />
+      <OrderPuncher
+        isOpen={isOrderOpen}
+        onClose={() => setIsOrderOpen(false)}
+      />
       {/* Add Stock Modal */}
-      <AddStockModal isOpen={isAddStockOpen} onClose={() => setAddStockOpen(false)} />
+      <AddStockModal
+        isOpen={isAddStockOpen}
+        onClose={() => setAddStockOpen(false)}
+      />
       {/* Refill Stock Modal */}
       <RefillStock isOpen={isRefillOpen} onClose={() => setRefillOpen(false)} />
     </div>

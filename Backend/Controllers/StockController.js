@@ -1,4 +1,4 @@
-import Product from "../Config/Database/Models/Productmodel.js";
+import Product from '../Config/Database/Models/Productmodel.js';
 
 export const refillStock = async (req, res) => {
   try {
@@ -7,14 +7,14 @@ export const refillStock = async (req, res) => {
 
     // Basic validation
     if (!productId || quantity < 1 || price < 1) {
-      return res.status(400).json({ error: "Invalid input data." });
+      return res.status(400).json({ error: 'Invalid input data.' });
     }
 
     // Find product that belongs to the user
     const product = await Product.findOne({ _id: productId, user: userId });
 
     if (!product) {
-      return res.status(404).json({ error: "Product not found or unauthorized." });
+      return res.status(404).json({ error: 'Product not found or unauthorized.' });
     }
 
     // Update fields
@@ -24,10 +24,10 @@ export const refillStock = async (req, res) => {
 
     await product.save(); // Saving data into database
 
-    res.status(200).json({ message: "Stock refilled successfully", product });
+    res.status(200).json({ message: 'Stock refilled successfully', product });
   } catch (err) {
-    console.error("Refill stock error:", err);
-    res.status(500).json({ error: "Failed to refill stock." });
+    console.error('Refill stock error:', err);
+    res.status(500).json({ error: 'Failed to refill stock.' });
   }
 };
 
@@ -38,7 +38,7 @@ export const addStock = async (req, res) => {
 
     // Basic validation
     if (!name || !category || quantity < 0 || price < 0) {
-      return res.status(400).json({ error: "Invalid product data." });
+      return res.status(400).json({ error: 'Invalid product data.' });
     }
 
     const newProduct = await Product.create({
@@ -49,15 +49,15 @@ export const addStock = async (req, res) => {
       lowStockThreshold,
       user: userId,
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
     });
 
     res.status(201).json({
-      message: "Stock added successfully",
-      product: newProduct
+      message: 'Stock added successfully',
+      product: newProduct,
     });
   } catch (err) {
-    console.error("Error adding stock:", err);
-    res.status(500).json({ error: "Server error" });
+    console.error('Error adding stock:', err);
+    res.status(500).json({ error: 'Server error' });
   }
 };

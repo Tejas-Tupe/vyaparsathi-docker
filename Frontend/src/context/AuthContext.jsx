@@ -20,7 +20,8 @@ const AuthProvider = ({ children }) => {
 
   // Keep axios header synced with token
   useEffect(() => {
-    if (token) axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    if (token)
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     else delete axios.defaults.headers.common["Authorization"];
   }, [token]);
 
@@ -49,7 +50,8 @@ const AuthProvider = ({ children }) => {
       toast.success(data.message || "Login successful!");
       return true;
     } catch (err) {
-      const error = err.response?.data?.error || "Invalid credentials or server error.";
+      const error =
+        err.response?.data?.error || "Invalid credentials or server error.";
       toast.error(error);
       return false;
     } finally {
@@ -57,22 +59,23 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-// SIGNUP
-const signup = async (formData) => {
-  try {
-    setLoading(true);
-    await axios.post(AUTH_ROUTES.SIGNUP, formData);
-    toast.success("Account created successfully!");
-    return true;
-  } catch (err) {
-    const backendError =
-      err.response?.data?.error || "Signup failed. Please check your details.";
-    toast.error(backendError);
-    return false;
-  } finally {
-    setLoading(false);
-  }
-};
+  // SIGNUP
+  const signup = async (formData) => {
+    try {
+      setLoading(true);
+      await axios.post(AUTH_ROUTES.SIGNUP, formData);
+      toast.success("Account created successfully!");
+      return true;
+    } catch (err) {
+      const backendError =
+        err.response?.data?.error ||
+        "Signup failed. Please check your details.";
+      toast.error(backendError);
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // LOGOUT
   const logout = () => {
@@ -83,73 +86,73 @@ const signup = async (formData) => {
     toast.info("Logged out successfully.");
   };
 
-// CHANGE PASSWORD
-const changePassword = async (oldPassword, newPassword, confirmPassword) => {
-  try {
-    if (!oldPassword || !newPassword || !confirmPassword) {
-      toast.error("Please fill all fields.");
-      return false;
-    }
-
-    if (newPassword !== confirmPassword) {
-      toast.error("New passwords do not match.");
-      return false;
-    }
-
-    const { data } = await axios.post(
-      AUTH_ROUTES.CHANGE_PASSWORD,
-      { oldPassword, newPassword },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+  // CHANGE PASSWORD
+  const changePassword = async (oldPassword, newPassword, confirmPassword) => {
+    try {
+      if (!oldPassword || !newPassword || !confirmPassword) {
+        toast.error("Please fill all fields.");
+        return false;
       }
-    );
 
-    toast.success(data.message || "Password changed successfully!");
-    return true;
-  } catch (err) {
-    const msg =
-      err.response?.data?.error ||
-      "Server error while changing password. Try again.";
-    toast.error(msg);
-    return false;
-  }
-};
+      if (newPassword !== confirmPassword) {
+        toast.error("New passwords do not match.");
+        return false;
+      }
+
+      const { data } = await axios.post(
+        AUTH_ROUTES.CHANGE_PASSWORD,
+        { oldPassword, newPassword },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      toast.success(data.message || "Password changed successfully!");
+      return true;
+    } catch (err) {
+      const msg =
+        err.response?.data?.error ||
+        "Server error while changing password. Try again.";
+      toast.error(msg);
+      return false;
+    }
+  };
 
   // DELETE ACCOUNT
   const deleteAccount = async (password) => {
-  try {
-    if (!password) {
-      toast.error("Please enter your current password.");
+    try {
+      if (!password) {
+        toast.error("Please enter your current password.");
+        return false;
+      }
+
+      const { data } = await axios.delete(AUTH_ROUTES.DELETE_ACCOUNT, {
+        data: { password }, // send password in body
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      toast.success(data.message || "Account deleted successfully.");
+
+      // Clear all user data from localStorage
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+
+      // Reset context state
+      setToken(null);
+      setUser(null);
+
+      return true;
+    } catch (err) {
+      const msg =
+        err.response?.data?.error || "Failed to delete account. Try again.";
+      toast.error(msg);
       return false;
     }
-
-    const { data } = await axios.delete(AUTH_ROUTES.DELETE_ACCOUNT, {
-      data: { password }, // send password in body
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    toast.success(data.message || "Account deleted successfully.");
-
-    // Clear all user data from localStorage
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-
-    // Reset context state
-    setToken(null);
-    setUser(null);
-
-    return true;
-  } catch (err) {
-    const msg =
-      err.response?.data?.error || "Failed to delete account. Try again.";
-    toast.error(msg);
-    return false;
-  }
-};
+  };
 
   return (
     <AuthContext.Provider

@@ -1,25 +1,25 @@
-import axios from 'axios'
+import axios from "axios";
 
-const API_BASE = import.meta.env.VITE_BACKEND_SERVER_URL
+const API_BASE = import.meta.env.VITE_BACKEND_SERVER_URL;
 
 const axiosInstance = axios.create({
   baseURL: API_BASE,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
-})
+});
 
 // attach token if present
 axiosInstance.interceptors.request.use((config) => {
   try {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem("token");
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`
+      config.headers.Authorization = `Bearer ${token}`;
     }
   } catch (err) {
     // ignore
   }
-  return config
-})
+  return config;
+});
 
-export default axiosInstance
+export default axiosInstance;

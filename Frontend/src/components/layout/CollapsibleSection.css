@@ -15,7 +15,9 @@
   background: white;
   border-radius: 8px;
   border-bottom: 1px solid white;
-  transition: background 0.25s ease, transform 0.2s ease;
+  transition:
+    background 0.25s ease,
+    transform 0.2s ease;
 }
 
 .collapsible-header:hover {
@@ -36,7 +38,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
 }
 
 .collapsible-header:hover .collapsible-icon {

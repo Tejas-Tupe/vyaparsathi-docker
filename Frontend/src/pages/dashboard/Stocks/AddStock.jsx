@@ -5,7 +5,7 @@ import Button from "../../../components/common/Button.jsx";
 import InputField from "../../../components/common/InputField.jsx";
 import { PRODUCT_ROUTES } from "../../../api/ApiRoutes.js";
 import { toast } from "react-toastify";
-import '../Forms.css'
+import "../Forms.css";
 
 const AddStockModal = ({ isOpen, onClose }) => {
   const [form, setForm] = useState({
@@ -39,7 +39,7 @@ const AddStockModal = ({ isOpen, onClose }) => {
       await axios.post(
         PRODUCT_ROUTES.ADD_STOCK,
         { name, category, quantity, price, lowStockThreshold },
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${token}` } },
       );
       toast.success("Stock added Successfully");
       onClose();

@@ -1,10 +1,10 @@
-import React from 'react';
-import './common.css';
+import React from "react";
+import "./common.css";
 
 const InputField = ({
   label,
   id,
-  type = 'text',
+  type = "text",
   value,
   onChange,
   placeholder,
@@ -12,13 +12,17 @@ const InputField = ({
   auto = false,
   name,
   register, // optional for react-hook-form
-  className = '',
+  className = "",
   ...rest
 }) => {
   if (auto && register && name) {
     return (
       <div className={`input-field-container ${className}`}>
-        {label && <label htmlFor={id || name} className="input-label">{label}</label>}
+        {label && (
+          <label htmlFor={id || name} className="input-label">
+            {label}
+          </label>
+        )}
         <input
           id={id || name}
           {...register(name, { required })}
@@ -34,7 +38,11 @@ const InputField = ({
   // manual mode
   return (
     <div className={`input-field-container ${className}`}>
-      {label && <label htmlFor={id} className="input-label">{label}</label>}
+      {label && (
+        <label htmlFor={id} className="input-label">
+          {label}
+        </label>
+      )}
       <input
         id={id || name}
         name={name}

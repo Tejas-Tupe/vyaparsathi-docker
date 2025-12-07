@@ -1,9 +1,9 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-import Sidebar from '../components/layout/Sidebar.jsx'
-import Footer from '../components/layout/Footer.jsx'
-import Header from '../components/layout/Header.jsx'
-import './dashboardLayout.css'
+import React from "react";
+import { Outlet } from "react-router-dom";
+import Sidebar from "../components/layout/Sidebar.jsx";
+import Footer from "../components/layout/Footer.jsx";
+import Header from "../components/layout/Header.jsx";
+import "./DashboardLayout.css";
 
 const DashboardLayout = () => {
   return (
@@ -17,7 +17,7 @@ const DashboardLayout = () => {
         <Footer />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default DashboardLayout
+export default DashboardLayout;

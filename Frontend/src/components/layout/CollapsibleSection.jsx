@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import "./collapsibleSection.css";
+import "./CollapsibleSection.css";
 
 const Collapsible = ({ title, children }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +17,6 @@ const Collapsible = ({ title, children }) => {
         >
           {isOpen ? <ChevronUp size={22} /> : <ChevronDown size={22} />}
         </motion.div>
-
       </div>
 
       <AnimatePresence>

@@ -19,13 +19,12 @@ const Orders = () => {
         },
       });
 
-    const result = await res.json();
+      const result = await res.json();
 
       if (Array.isArray(result)) {
         setOrders(result);
       }
     } catch (err) {
-      toast.error("Failed to fetch orders");
     } finally {
       setLoading(false);
     }
@@ -62,11 +61,7 @@ const Orders = () => {
     return <p style={{ color: "var(--primary-color)" }}>Loading orders...</p>;
 
   if (orders.length === 0)
-    return (
-      <p style={{ color: "var(--primary-color)" }}>
-        No orders found.
-      </p>
-    );
+    return <p style={{ color: "var(--primary-color)" }}>No orders found.</p>;
 
   return (
     <div className="orders container">

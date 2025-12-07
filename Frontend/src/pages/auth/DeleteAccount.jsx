@@ -16,7 +16,7 @@ const DeleteAccount = () => {
     e.preventDefault();
 
     const confirmDelete = window.confirm(
-      "Are you sure you want to permanently delete your account? This action cannot be undone."
+      "Are you sure you want to permanently delete your account? This action cannot be undone.",
     );
     if (!confirmDelete) return;
 
@@ -56,7 +56,7 @@ const DeleteAccount = () => {
             required
           />
 
-          <Button variant="danger"type="submit" disabled={loading}>
+          <Button variant="danger" type="submit" disabled={loading}>
             {loading ? "Deleting..." : "Delete Account"}
           </Button>
         </form>

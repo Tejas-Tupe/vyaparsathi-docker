@@ -129,20 +129,74 @@ const EditProfile = () => {
         <h2 className="auth-title">Edit Your Profile</h2>
 
         <form onSubmit={handleUpdateProfile} className="auth-form">
-          <InputField label="First Name" name="firstName" value={formData.firstName} placeholder={initialData.firstName} onChange={handleChange} />
-          <InputField label="Last Name" name="lastName" value={formData.lastName} placeholder={initialData.lastName} onChange={handleChange} />
-          <InputField label="Email" name="email" type="email" value={formData.email} placeholder={initialData.email} onChange={handleChange} />
-          <InputField label="Mobile Number" name="mobile" value={formData.mobile} placeholder={initialData.mobile} onChange={handleChange} />
-          <InputField label="Business Name" name="shopName" value={formData.shopName} placeholder={initialData.shopName} onChange={handleChange} />
-          <InputField label="Business Type" name="shopType" value={formData.shopType} placeholder={initialData.shopType} onChange={handleChange} />
-          <InputField label="Address" name="address" value={formData.address} placeholder={initialData.address} onChange={handleChange} />
-          <InputField label="GSTIN" name="gstin" value={formData.gstin} placeholder={initialData.gstin} onChange={handleChange} />
+          <InputField
+            label="First Name"
+            name="firstName"
+            value={formData.firstName}
+            placeholder={initialData.firstName}
+            onChange={handleChange}
+          />
+          <InputField
+            label="Last Name"
+            name="lastName"
+            value={formData.lastName}
+            placeholder={initialData.lastName}
+            onChange={handleChange}
+          />
+          <InputField
+            label="Email"
+            name="email"
+            type="email"
+            value={formData.email}
+            placeholder={initialData.email}
+            onChange={handleChange}
+          />
+          <InputField
+            label="Mobile Number"
+            name="mobile"
+            value={formData.mobile}
+            placeholder={initialData.mobile}
+            onChange={handleChange}
+          />
+          <InputField
+            label="Business Name"
+            name="shopName"
+            value={formData.shopName}
+            placeholder={initialData.shopName}
+            onChange={handleChange}
+          />
+          <InputField
+            label="Business Type"
+            name="shopType"
+            value={formData.shopType}
+            placeholder={initialData.shopType}
+            onChange={handleChange}
+          />
+          <InputField
+            label="Address"
+            name="address"
+            value={formData.address}
+            placeholder={initialData.address}
+            onChange={handleChange}
+          />
+          <InputField
+            label="GSTIN"
+            name="gstin"
+            value={formData.gstin}
+            placeholder={initialData.gstin}
+            onChange={handleChange}
+          />
 
-          <Button variant="primary" type="submit" disabled={loading} className="auth-submit-btn">
+          <Button
+            variant="primary"
+            type="submit"
+            disabled={loading}
+            className="auth-submit-btn"
+          >
             {loading ? "Updating..." : "Update Profile"}
           </Button>
         </form>
-          <p className="auth-footer-text">
+        <p className="auth-footer-text">
           <Link to="/dashboard">Back to Dashbaord</Link>
         </p>
       </div>

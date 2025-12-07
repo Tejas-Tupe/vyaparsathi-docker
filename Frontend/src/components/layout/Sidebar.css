@@ -8,8 +8,25 @@
   top: 0;
   padding: 1rem;
 }
-.sidebar h2 { color: var(--primary-color); margin-bottom: 1rem; }
-.sidebar ul { list-style: none; padding: 0; }
-.sidebar li { margin-bottom: 0.6rem; }
-.sidebar a { padding: 0.5rem 0.75rem; display: block; border-radius: 6px; color: var(--text-color); }
-.sidebar a.active, .sidebar a:hover { background: var(--primary-color); color: #fff; }
+.sidebar h2 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+.sidebar li {
+  margin-bottom: 0.6rem;
+}
+.sidebar a {
+  padding: 0.5rem 0.75rem;
+  display: block;
+  border-radius: 6px;
+  color: var(--text-color);
+}
+.sidebar a.active,
+.sidebar a:hover {
+  background: var(--primary-color);
+  color: #fff;
+}

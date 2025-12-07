@@ -1,55 +1,54 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
   firstName: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
   },
   lastName: {
     type: String,
     default: '',
-    trim: true
+    trim: true,
   },
   mobile: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
   },
   email: {
     type: String,
     required: true,
     unique: true,
     lowercase: true,
-    trim: true
+    trim: true,
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
   shopName: {
     type: String,
-    default: ''
+    default: '',
   },
   shopType: {
     type: String,
-    default: ''
+    default: '',
   },
   address: {
     type: String,
-    default: ''
+    default: '',
   },
   gstin: {
     type: String,
-    default: ''
+    default: '',
   },
   createdAt: {
-  type:Date,
-  default:Date.now
-  }
+    type: Date,
+    default: Date.now,
+  },
 });
 
 let User = mongoose.model('User', userSchema);
 
 export default User;
-

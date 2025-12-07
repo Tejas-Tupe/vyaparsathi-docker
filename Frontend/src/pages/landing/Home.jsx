@@ -1,28 +1,32 @@
-import React from 'react'
-import Navbar from '../../components/layout/Navbar.jsx'
-import Hero from '../../components/home/Hero.jsx'
-import Footer from '../../components/layout/Footer.jsx'
-import FeatureCard from '../../components/common/FeatureCard.jsx'
-import './home.css'
-import '../../components/common/common.css'
+import React from "react";
+import Navbar from "../../components/layout/Navbar.jsx";
+import Hero from "../../components/home/Hero.jsx";
+import Footer from "../../components/layout/Footer.jsx";
+import FeatureCard from "../../components/common/Featurecard.jsx";
+import "./home.css";
+import "../../components/common/common.css";
 
 // Feature Data Array
 const FEATURES = [
   {
     title: "Inventory made easy",
-    description: "Quickly add products, manage stock, and track value — all on one screen."
+    description:
+      "Quickly add products, manage stock, and track value — all on one screen.",
   },
   {
     title: "Orders & Billing",
-    description: "Create invoices, accept payments, and export reports without leaving the app."
+    description:
+      "Create invoices, accept payments, and export reports without leaving the app.",
   },
   {
     title: "Customers & Loyalty",
-    description: "Keep customer notes, history, and offer repeat-customer perks."
+    description:
+      "Keep customer notes, history, and offer repeat-customer perks.",
   },
   {
     title: "Secure & Local",
-    description: "Secure JWT authentication and data export options for backups."
+    description:
+      "Secure JWT authentication and data export options for backups.",
   },
 ];
 
@@ -30,7 +34,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <Hero onPrimaryClick={() => (window.location.href = '/register')} />
+      <Hero onPrimaryClick={() => (window.location.href = "/register")} />
 
       <section className="home-features container">
         <h2 className="section-heading">Why Vyaparsathi?</h2>
@@ -45,11 +49,10 @@ const Home = () => {
             />
           ))}
         </div>
-
       </section>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

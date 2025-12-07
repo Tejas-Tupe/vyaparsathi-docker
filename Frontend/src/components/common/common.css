@@ -1,6 +1,6 @@
 /* src/components/common/common.css (AUDITED AND CLEANED) */
 
-@import '../../styles/variables.css';
+@import "../../styles/variables.css";
 
 /* ================== Button Styles ================== */
 
@@ -67,7 +67,6 @@ button.common-btn-danger {
   transform: translateY(-1px);
 }
 
-
 /* ================== Input Styles ================== */
 
 .input-field-container {
@@ -90,7 +89,9 @@ button.common-btn-danger {
   font-size: 1rem;
   color: var(--text-color);
   background-color: #fff;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
   box-sizing: border-box;
 }
 
@@ -125,9 +126,10 @@ button.common-btn-danger {
   animation: modal-open 0.3s forwards ease-out;
 }
 
-
 @keyframes modal-open {
-  to { transform: scale(1); }
+  to {
+    transform: scale(1);
+  }
 }
 
 .modal-header {

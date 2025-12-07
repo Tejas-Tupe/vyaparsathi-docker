@@ -1,38 +1,38 @@
 .app-footer-simple {
-    background-color: #ffffff; /* Use white for a clean look */
-    border-top: 1px solid #e5e7eb;
-    padding: 1.5rem 0; /* Add vertical padding */
-    color: #6b7280;
-    font-size: 0.9rem;
+  background-color: #ffffff; /* Use white for a clean look */
+  border-top: 1px solid #e5e7eb;
+  padding: 1.5rem 0; /* Add vertical padding */
+  color: #6b7280;
+  font-size: 0.9rem;
 }
 
 .footer-attribution-inner {
-    /* Center all text content */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem; /* Small space between copyright and attribution */
-    text-align: center;
+  /* Center all text content */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* Small space between copyright and attribution */
+  text-align: center;
 }
 
 .footer-copyright-simple,
 .footer-developed-by {
-    margin: 0;
-    padding: 0;
-    line-height: 1.4;
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
 }
 
 /* Developer Link (Tejas Tupe's LinkedIn) */
 .developer-link {
-    color: var(--primary-color);
-    font-weight: 600;
-    transition: color 0.2s ease;
-    /* Add a subtle underline on hover only */
-    text-decoration: none; 
+  color: var(--primary-color);
+  font-weight: 600;
+  transition: color 0.2s ease;
+  /* Add a subtle underline on hover only */
+  text-decoration: none;
 }
 
 .developer-link:hover {
-    color: color-mix(in srgb, var(--primary-color) 80%, black);
-    text-decoration: underline;
+  color: color-mix(in srgb, var(--primary-color) 80%, black);
+  text-decoration: underline;
 }

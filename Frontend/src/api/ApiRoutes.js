@@ -9,7 +9,7 @@ export const AUTH_ROUTES = {
 
 export const USER_ROUTES = {
   USER_DETAILS: `${BASE_URL}/users/userdetails`,
-  EDIT_PROFILE: `${BASE_URL}/auth/editprofile`
+  EDIT_PROFILE: `${BASE_URL}/auth/editprofile`,
 };
 
 export const PRODUCT_ROUTES = {
@@ -17,19 +17,18 @@ export const PRODUCT_ROUTES = {
   ADD_STOCK: `${BASE_URL}/stocks/add`,
   REFILL_STOCK: `${BASE_URL}/stocks/refill`,
   PRODUCTS_OVERVIEW: `${BASE_URL}/products/productsoverview`,
-  OVERVIEW:`${BASE_URL}/products/overview`,
-  DELETE_PRODUCT:`${BASE_URL}/products/delete`
+  OVERVIEW: `${BASE_URL}/products/overview`,
+  DELETE_PRODUCT: `${BASE_URL}/products/delete`,
 };
 
 export const ORDER_ROUTES = {
   CREATE_ORDER: `${BASE_URL}/orders/create`,
   MY_ORDERS: `${BASE_URL}/orders/myorders`,
   EXPORT_ALL_ORDERS: `${BASE_URL}/orders/export`,
-  DELETE_ALL_ORDERS:`${BASE_URL}/orders/delete`
+  DELETE_ALL_ORDERS: `${BASE_URL}/orders/delete`,
 };
 
 export const HEALTH_ROUTE = `${BASE_URL}/health`;
-
 
 export default {
   BASE_URL,

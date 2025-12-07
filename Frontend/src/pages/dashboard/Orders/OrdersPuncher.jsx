@@ -5,7 +5,7 @@ import Button from "../../../components/common/Button.jsx";
 import InputField from "../../../components/common/InputField.jsx";
 import { ORDER_ROUTES, PRODUCT_ROUTES } from "../../../api/ApiRoutes.js";
 import { toast } from "react-toastify";
-import '../Forms.css'
+import "../Forms.css";
 
 const OrderPuncher = ({ isOpen, onClose }) => {
   const [products, setProducts] = useState([]);
@@ -25,9 +25,7 @@ const OrderPuncher = ({ isOpen, onClose }) => {
       const res = await axios.get(PRODUCT_ROUTES.MY_PRODUCTS, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      const list = Array.isArray(res.data)
-        ? res.data
-        : res.data.products || [];
+      const list = Array.isArray(res.data) ? res.data : res.data.products || [];
       setProducts(list);
     } catch (err) {
       console.error("Error fetching products:", err);
@@ -67,9 +65,8 @@ const OrderPuncher = ({ isOpen, onClose }) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("token");
-      await axios.post(ORDER_ROUTES.CREATE_ORDER,
-        orderData,
-        {headers: { Authorization: `Bearer ${token}` },
+      await axios.post(ORDER_ROUTES.CREATE_ORDER, orderData, {
+        headers: { Authorization: `Bearer ${token}` },
       });
       toast.success("Order placed successfully");
       onClose();
@@ -95,7 +92,10 @@ const OrderPuncher = ({ isOpen, onClose }) => {
             <option value="">Select</option>
             {products.map((p) => (
               <option key={p._id} value={p._id}>
-                {p.name} {typeof p.quantity !== "undefined" ? `(${p.quantity} left)` : ""}
+                {p.name}{" "}
+                {typeof p.quantity !== "undefined"
+                  ? `(${p.quantity} left)`
+                  : ""}
               </option>
             ))}
           </select>
@@ -114,7 +114,7 @@ const OrderPuncher = ({ isOpen, onClose }) => {
 
         <InputField label="Total (₹)" value={price * quantity || 0} disabled />
 
-        <div className="order-btns">  
+        <div className="order-btns">
           <Button type="submit" variant="primary" disabled={loading}>
             {loading ? "Placing..." : "Place Order"}
           </Button>

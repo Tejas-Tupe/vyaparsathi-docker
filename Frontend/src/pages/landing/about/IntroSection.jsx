@@ -1,5 +1,5 @@
 import React from "react";
-import FeatureCard from "../../../components/common/Featurecard";
+import FeatureCard from "../../../components/common/Featurecard.jsx";
 
 const IntroSection = () => {
   const features = [
@@ -34,10 +34,10 @@ const IntroSection = () => {
       </p>
 
       <p className="intro-paragraph">
-        The app is designed to be easy to use add products, track stock,
-        create invoices, and keep customer records all without complicated
-        setup. The goal is to bring reliable, secure digital tools to local
-        businesses so they can save time and grow.
+        The app is designed to be easy to use add products, track stock, create
+        invoices, and keep customer records all without complicated setup. The
+        goal is to bring reliable, secure digital tools to local businesses so
+        they can save time and grow.
       </p>
 
       <div className="intro-features">

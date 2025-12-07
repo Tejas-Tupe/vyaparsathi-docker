@@ -1,5 +1,5 @@
-import React from 'react';
-import './Featurecard.css'
+import React from "react";
+import "./Featurecard.css";
 const FeatureCard = ({ title, description }) => {
   return (
     <div className="feature">

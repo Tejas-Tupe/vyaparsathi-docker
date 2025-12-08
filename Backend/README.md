@@ -1,148 +1,218 @@
-# 🛍️ Vyaparsathi – Empowering Local Businesses Digitally
+# Vyaparsathi - Backend
+
+**Vyaparsathi Backend** is the server-side infrastructure for the Vyaparsathi inventory management platform. It provides a secure, RESTful API to handle user authentication, inventory tracking, order processing, and persistent data storage for small business operations.
 
 ---
 
-## 🚀 Why i Built Vyaparsathi
+## System Architecture
 
-Across rural and semi-urban India, thousands of micro and small enterprises still operate using traditional, manual methods—recording sales on paper, maintaining mental stock logs, and lacking any form of structured data management. This creates friction, errors, and missed growth opportunities.
+The backend is built on the **Node.js** runtime using the **Express.js** framework. It follows a layered **MVC (Model-View-Controller)** architecture to separate concerns between data definitions, business logic, and routing.
 
-**Vyaparsathi** is built with a singular mission:
 
-> To **digitally enable grassroots entrepreneurs** and help them manage their businesses with ease, efficiency, and clarity — all without technical knowledge.
+                           ┌──────────────────────────────┐
+                           │        Express Server        │
+                           │           index.js           │
+                           └───────────────┬──────────────┘
+                                           │
+                                           ▼
+                             ┌────────────────────────┐
+                             │      Route Layer       │
+                             │  (API Endpoints Only)  │
+                             └───────────┬────────────┘
+        ┌────────────────────────────────┼──────────────────────────────────┐
+        │                                │                                  │
+        ▼                                ▼                                  ▼
 
-We envisioned a product that is:
+┌─────────────────────┐      ┌───────────────────────┐       ┌───────────────────────┐
+│   Auth Routes       │      │   Product Routes      │       │    Order Routes       │
+│   /api/auth/*       │      │   /api/products/*     │       │    /api/orders/*      │
+└──────────┬──────────┘      └──────────┬────────────┘       └──────────┬────────────┘
+           │                            │                               │
+           ▼                            ▼                               ▼
 
-- **Affordable** for all tiers of micro-businesses
-- **Accessible** across devices and geographies
-- **Simple yet powerful**, designed for real-world rural use cases
+┌─────────────────────────┐      ┌────────────────────────┐      ┌─────────────────────────┐
+│  Auth Controller        │      │  Product Overview      │      │   Order Controller      │
+│  login/signup/delete ac.│      │  CRUD + Stock Mgmt     │      │  Create + Fetch Orders  │
+└──────────┬──────────────┘      └──────────┬─────────────┘      └──────────┬──────────────┘
+           │                                │                               │
+           ▼                                ▼                               ▼
 
-It is built for the **Indian market** — from Kirana stores to small hardware shops — enabling them to step confidently into the digital age.
+              ┌──────────────────────────────────────────────────────────┐
+              │                 Core Backend Services                    │
+              │  Business Logic • Validation • Error Handling • JWT      │
+              └───────────────────────────┬──────────────────────────────┘
+                                          │
+                                          ▼
+                 ┌───────────────────────────────────────────────┐
+                 │            Authentication Middleware          │
+                 │        (JWT Verification, Authorization)      │
+                 └────────────────────────┬──────────────────────┘
+                                          │
+                                          ▼
+                      ┌────────────────────────────────────┐
+                      │          Database Layer            │
+                      │              MongoDB               │
+                      │     (via Mongoose ODM Models)      │
+                      └──────────────────┬─────────────────┘
+                                         │
+              ┌──────────────────────────┼───────────────────────────┐
+              │                          │                           │
+              ▼                          ▼                           ▼
 
----
+   ┌────────────────────┐     ┌────────────────────────┐    ┌────────────────────────┐
+   │    User Model      │     │    Product Model       │    │     Order Model        │
+   │  (name, email, pw) │     │  (name, price, stock)  │    │ (productId, qty, total)│
+   └────────────────────┘     └────────────────────────┘    └────────────────────────┘
 
-## 🧠 How i Built It
-
-We followed a clean, full-stack development methodology using modern web technologies. With a focus on scalability, security, and simplicity, the application was crafted from the ground up in two separate codebases:
-
-- A **dark-themed, responsive frontend** built with **React.js (Vite)**
-- A **secure, modular backend** using **Node.js with Express and MongoDB (Database)**
-
-Key development highlights:
-
-- RESTful API design with efficient data modeling
-- Context API for global state (Auth, Profile, etc.)
-- Protected routes using JWT-based authentication & authorization
-- Dynamic product selection and real-time order calculations
-- Stock auto-deduction and update on order placement
-- Seamless frontend-backend communication over HTTPS using CORS
-
----
-
-## 🧗‍♂️ Challenges We Faced
-
-Like any real-world product journey, Vyaparsathi's development wasn't without hurdles. Some of the key challenges we tackled:
-
-- 🔐 Secure implementation of authentication with **JWT & bcrypt**
-- 🔄 Real-time syncing of stock and orders with proper DB structure
-- 🌐 CORS misconfigurations during multi-repo Render deployment
-- 🧪 Validating complex business data entries with edge cases
-- 📦 Optimizing MongoDB schemas and query performance
-- 🧑‍💻 Managing two repositories for full separation of concerns
-
----
-
-## 🛠️ Tech Stack
-
-### 🔮 Frontend:
-
-- React.js (with Vite)
-- Vanilla CSS (with custom dark theme)
-- React Router DOM
-- Axios / Fetch for API calls
-- Context API for Authentication & Authorization and Global State
-- Responsive Design (Mobile/Desktop)
-
-### 🔧 Backend:
-
-- Node.js with Express.js
-- MongoDB with Mongoose ODM
-- JSON Web Tokens (JWT) for route protection
-- bcrypt.js for password hashing
-- dotenv for environment configuration
-- CORS for secure frontend-backend communication
-- Deployed on: **Render.com**
+### Request Flow
+1.  **Route:** Incoming HTTP requests are matched to defined routes.
+2.  **Middleware:** Requests pass through security middleware (CORS, Helmet) and Authentication middleware (JWT verification).
+3.  **Controller:** Validated requests are processed by controllers which execute business logic.
+4.  **Service/Model:** Controllers interact with MongoDB via Mongoose to perform data operations.
+5.  **Response:** JSON responses are standardized and sent back to the client.
 
 ---
 
-## 📁 Project Structure
+## Technology Stack
 
-### Backend:
-
-- `routes/` – API route definitions
-- `controllers/` – Business logic handling
-- `models/` – MongoDB schemas
-- `middleware/` – Auth & error handling
-- `index.js` – Entry point
-
----
-
-## 🌍 Live Deployment
-
-- **Link:** [Vyaparsathi](https://vyaparsathi-frontend.onrender.com)
+* **Runtime Environment:** Node.js
+* **Web Framework:** Express.js
+* **Database:** MongoDB (NoSQL)
+* **ODM (Object Data Modeling):** Mongoose
+* **Authentication:** JSON Web Tokens (JWT) & bcrypt.js
+* **Validation:** Joi / Mongoose Schema Validation
+* **Security:** CORS, dotenv, Helmet
+* **Deployment:**
 
 ---
 
-## 🛡️ Uptime Monitoring
+##  Key Features & Implementation
 
-To ensure the Vyaparsathi backend remains awake and responsive (especially on free-tier hosting), we’ve set up **UptimeRobot** to ping a dedicated health check route every 5 minutes.
+### 1. Authentication & Security
+- Stateless authentication using **JWT**.
+- Passwords securely hashed using **bcrypt**.
+- Protected routes enforced via custom authorization middleware.
 
-- ✅ **Backend Health Check Route:** [`/health`](https://vyaparsathi.onrender.com/health)  
-  Responds with a simple status message to confirm the server is running.
+### 2. Inventory Management
+- Full **CRUD** operations for product management.
+- Schema validations using Mongoose models:
+  - Stock cannot be negative.
+  - Price must be numeric.
+  - Required fields enforced.
 
-- ✅ **Frontend & Backend Monitoring:**  
-  Monitored via [UptimeRobot](https://uptimerobot.com/) to prevent cold starts and maintain high availability.
-
-This setup ensures the app remains stable and responsive for users at all times — even when hosted on Render's free tier.
-
-## 🌟 Upcoming Features
-
-- 📊 Business insights dashboard with analytics
-- 🧾 PDF invoice & receipt generation
-- 🌐 Multi-language support (Marathi, Hindi, English)
-- 📱 PWA for mobile-first users
-- 📤 Import/Export product data via Excel
-- 📋 Vendor & Customer contact directory
-- 🔍 Search & filter for orders and inventory
+### 3. Atomic Order Processing
+- Concurrency-safe stock deduction using MongoDB **atomic operators (`$inc`)**.
+- Prevents race conditions during simultaneous orders.
+- Ensures consistent inventory state.
 
 ---
 
-## 🤝 Special Thanks
-
-This journey would not have been possible without:
-
-- 🙏 Local entrepreneurs in **Marathwada** who inspired the need for Vyaparsathi
-- 🤖 A huge shoutout to **ChatGPT (by OpenAI)** – my coding assistant, debugger, and brainstorming buddy through every feature
-- 🙌 The developer community and open-source contributors
+## 4. API Endpoints Overview
 
 ---
 
-## 📬 Contact & Collaboration
+### **1. Authentication Routes**
 
-Have an idea or want to contribute?
+| Method | Endpoint                           | Description                     |
+|--------|------------------------------------|---------------------------------|
+| POST   | `/auth/signup`                     | Register a new user             |
+| POST   | `/auth/login`                      | Login user & return JWT         |
+| POST   | `/auth/changepassword`             | Change user password (Protected)|
+| DELETE | `/auth/deleteaccount`              | Delete user account (Protected) |
+| PATCH  | `/auth/editprofile`                | Edit user profile (Protected)   |
 
-I'm open to collaboration for:
+---
 
-- Product enhancements
-- UI/UX design upgrades
-- Real-world testing in rural markets
-- Government/NGO partnerships
+### **2. User Routes**
+
+| Method | Endpoint                 | Description                              |
+|--------|--------------------------|------------------------------------------|
+| GET    | `/users/userdetails`     | Fetch logged-in user details (Protected) |
 
 ---
 
-## 🧑‍💻 Final Product Proudly Developed & Maintained By
+### **3. Product & Stock Routes**
 
-# **Tejas Tupe**
-
-`tupetejas265@gmail.com | https://www.linkedin.com/in/tejastupe | https://github.com/Tejas-Tupe`
+| Method | Endpoint                          | Description                                        |
+|--------|-----------------------------------|----------------------------------------------------|
+| GET    | `/products`                       | Get all products (Protected)                       |
+| POST   | `/stocks/add`                     | Add new stock entry for a product (Protected)      |
+| POST   | `/stocks/refill`                  | Refill inventory for a product (Protected)         |
+| GET    | `/products/productsoverview`      | Fetch all products with overview details(Protected)|
+| GET    | `/products/overview`              | Get complete product summary (Protected)           |
+| DELETE | `/products/delete`                | Delete product (Protected)                         |
 
 ---
+
+### **4. Order Routes**
+
+| Method | Endpoint                    | Description                                   |
+|--------|-----------------------------|-----------------------------------------------|
+| POST   | `/orders/create`            | Create a new order + auto deduct stock        |
+| GET    | `/orders/myorders`          | Fetch all orders of the logged-in user        |
+| GET    | `/orders/export`            | Export all orders as downloadable file        |
+| DELETE | `/orders/delete`            | Delete all orders (Protected)                 |
+
+---
+
+### **5. System Routes**
+
+| Method | Endpoint     | Description               |
+|--------|--------------|---------------------------|
+| GET    | `/health`    | Server health check route |
+
+---
+
+## 5. Database Models
+
+### User Model
+- Stores authentication credentials and business profile.
+- Fields: `username`, `email`, `password` (hashed), `businessName`, `etc`.
+
+### Product Model
+- Represents individual inventory items.
+- Fields: `name`, `category`, `price`, `stock`, `unit`, `etc`.
+
+### Order Model
+- Records transaction history and links to products.
+- Fields: `customerName`, `products`, `totalAmount`, `date`, `etc`.
+
+---
+
+## Folder Structure
+
+The project is modularized to ensure scalability and ease of maintenance.
+
+```bash
+Backend/
+│
+├── Config/
+│   ├── Database/
+│   │   ├── Models/
+│   │   ├── Ordermodel.js
+│   │   ├── Productmodel.js
+│   │   └── Usermodel.js
+│   │
+│   └── db.js
+│
+├── validateEnv.js
+│
+├── Controllers/
+│
+├── Joi Schemas/
+│
+├── Middlewares/
+│
+├── Routes/
+│
+├── index.js
+├── package.json
+├── package-lock.json
+├── .dockerignore
+├── Dockerfile
+├── .prettierignore
+├── .prettierrc
+├── .env
+└── README.md
+
+

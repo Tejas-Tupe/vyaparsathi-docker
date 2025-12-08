@@ -1,16 +1,65 @@
-# React + Vite
+# Vyaparsathi Frontend  
+A modern, fast, and responsive **React + Vite** interface built to empower micro-business owners with a clean and simple digital experience.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## Vision
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The goal of the frontend is to create an interface that is:
 
-## React Compiler
+- **Simple enough** for rural & small-scale entrepreneurs  
+- **Fast and reliable** even on low-bandwidth connections  
+- **Clean UI/UX** with predictable navigation  
+- **Accessible** across devices (mobile-first design)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This is the layer where users *feel* Vyaparsathi so usability, clarity, and speed were the top priorities.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack (Frontend)
+
+- **React 19 + Vite**
+- **React Router DOM** (Navigation & Protected Routes)
+- **Context API** (Auth State + Global User Profile)
+- **Axios** (API communication)
+- **React Toastify** (UI notifications)
+- **Framer Motion** (smooth animations)
+- **Lucide React Icons**
+- **VanilaCSS** (CSS Styling)
+
+
+##  Project Structure
+
+```bash
+Frontend/
+│
+├── public/ # Static assets served directly
+│
+├── src/
+│ ├── api/ # Axios instance + route definitions
+│ ├── assets/ # Images, icons, logos, static files
+│ ├── components/ # Reusable UI components (buttons, forms, cards)
+│ ├── context/ # AuthContext, UserContext, provider setup
+│ ├── hooks/ # Custom React hooks
+│ ├── layouts/ # Layout components (DashboardLayout, AuthLayout)
+│ ├── pages/ # Screens (Login, Signup, Dashboard, Orders, etc.)
+│ ├── routes/ # Protected routes + Router setup
+│ ├── styles/ # Global styles, Tailwind config overrides
+│ │
+│ ├── App.jsx # Root component
+│ ├── index.css # Global CSS (Tailwind entry)
+│ └── main.jsx # Vite + React entry point
+│
+├── .dockerignore
+├── Dockerfile # Nginx + Vite production container setup
+│
+├── eslint.config.js # Project linting rules
+├── index.html # Main HTML template
+├── nginx.conf # Nginx configuration for production build
+│
+├── package.json
+├── package-lock.json
+│
+├── vite.config.js # Vite configuration file
+└── README.md # Project documentation
+

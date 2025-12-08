@@ -9,60 +9,7 @@
 The backend is built on the **Node.js** runtime using the **Express.js** framework. It follows a layered **MVC (Model-View-Controller)** architecture to separate concerns between data definitions, business logic, and routing.
 
 
-                           ┌──────────────────────────────┐
-                           │        Express Server        │
-                           │           index.js           │
-                           └───────────────┬──────────────┘
-                                           │
-                                           ▼
-                             ┌────────────────────────┐
-                             │      Route Layer       │
-                             │  (API Endpoints Only)  │
-                             └───────────┬────────────┘
-        ┌────────────────────────────────┼──────────────────────────────────┐
-        │                                │                                  │
-        ▼                                ▼                                  ▼
-
-┌─────────────────────┐      ┌───────────────────────┐       ┌───────────────────────┐
-│   Auth Routes       │      │   Product Routes      │       │    Order Routes       │
-│   /api/auth/*       │      │   /api/products/*     │       │    /api/orders/*      │
-└──────────┬──────────┘      └──────────┬────────────┘       └──────────┬────────────┘
-           │                            │                               │
-           ▼                            ▼                               ▼
-
-┌─────────────────────────┐      ┌────────────────────────┐      ┌─────────────────────────┐
-│  Auth Controller        │      │  Product Overview      │      │   Order Controller      │
-│  login/signup/delete ac.│      │  CRUD + Stock Mgmt     │      │  Create + Fetch Orders  │
-└──────────┬──────────────┘      └──────────┬─────────────┘      └──────────┬──────────────┘
-           │                                │                               │
-           ▼                                ▼                               ▼
-
-              ┌──────────────────────────────────────────────────────────┐
-              │                 Core Backend Services                    │
-              │  Business Logic • Validation • Error Handling • JWT      │
-              └───────────────────────────┬──────────────────────────────┘
-                                          │
-                                          ▼
-                 ┌───────────────────────────────────────────────┐
-                 │            Authentication Middleware          │
-                 │        (JWT Verification, Authorization)      │
-                 └────────────────────────┬──────────────────────┘
-                                          │
-                                          ▼
-                      ┌────────────────────────────────────┐
-                      │          Database Layer            │
-                      │              MongoDB               │
-                      │     (via Mongoose ODM Models)      │
-                      └──────────────────┬─────────────────┘
-                                         │
-              ┌──────────────────────────┼───────────────────────────┐
-              │                          │                           │
-              ▼                          ▼                           ▼
-
-   ┌────────────────────┐     ┌────────────────────────┐    ┌────────────────────────┐
-   │    User Model      │     │    Product Model       │    │     Order Model        │
-   │  (name, email, pw) │     │  (name, price, stock)  │    │ (productId, qty, total)│
-   └────────────────────┘     └────────────────────────┘    └────────────────────────┘
+  ![Backend Architecture](./Assets/backend-architecture.png)
 
 ### Request Flow
 1.  **Route:** Incoming HTTP requests are matched to defined routes.

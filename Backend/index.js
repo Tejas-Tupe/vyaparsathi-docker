@@ -31,9 +31,7 @@ const limiter = rateLimit({
 app.use(limiter);
 
 const allowedOrigins = [
-  'https://vyaparsathi-frontend.onrender.com',
-  'http://localhost:5173',
-  'http://vyaparsathi-frontend',
+  'https://vyaparsathi-docker-frontend.onrender.com',
 ];
 
 app.use(

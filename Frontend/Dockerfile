@@ -1,37 +1,36 @@
-# Stage 1: React (Vite) App build process
+# ---------- Stage 1: Build Vite App ----------
 FROM node:20-alpine AS build
 WORKDIR /app
 
-# Accept build-time argument
+# Build-time backend URL
 ARG VITE_BACKEND_SERVER_URL=/api
-
-# Export it so Vite can read it during `npm run build`
 ENV VITE_BACKEND_SERVER_URL=$VITE_BACKEND_SERVER_URL
 
-# Install dependencies
+# Install deps
 COPY package*.json ./
 RUN npm install
 
 # Copy source
 COPY . .
 
-# Build the project
+# Build the frontend
 RUN npm run build
 
-# Stage 2: Nginx Static Server
-FROM nginx:alpine
 
-# Copy Vite build output
-COPY --from=build /app/dist /usr/share/nginx/html
+# ---------- Stage 2: Serve with NGINX ----------
+FROM nginx:1.25-alpine    
 
-# Copy nginx config
+# Copy optimized NGINX config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Expose HTTP port
+# Copy built frontend files
+COPY --from=build /app/dist /usr/share/nginx/html
+
+# Expose port
 EXPOSE 80
 
-ENTRYPOINT ["nginx", "-g"]
-CMD ["daemon", "off;"]  
+# Correct final command — Render compatible
+CMD ["nginx", "-g", "daemon off;"]
 
 # Healthcheck
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \

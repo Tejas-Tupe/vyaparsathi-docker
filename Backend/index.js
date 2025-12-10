@@ -53,6 +53,17 @@ app.use(express.urlencoded({ extended: true }));
 //Routes
 app.use('/api', router);
 
+// debug route
+app.get('/api/debug', (req, res) => {
+  res.json({
+    success: true,
+    message: "Debug route working — NGINX proxy is correct",
+    from: "Backend",
+    url: req.originalUrl,
+    origin: req.get("origin"),
+  });
+});
+
 // 404 route
 app.use((req, res) => {
   res.status(404).json({

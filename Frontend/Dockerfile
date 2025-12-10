@@ -21,7 +21,7 @@ RUN npm run build
 FROM nginx:1.25-alpine    
 
 # Copy optimized NGINX config
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy built frontend files
 COPY --from=build /app/dist /usr/share/nginx/html

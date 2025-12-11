@@ -111,12 +111,14 @@ Stores all order transactions created by users.
 
 #  Model Relationships
 
+```bash
 User
 ├── creates → Products
 └── creates → Orders
 
 Order
 └── references → Product (productId)
+```
 
 - A **User** can create many **Products**  
 - A **User** can create many **Orders**  

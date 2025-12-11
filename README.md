@@ -237,10 +237,6 @@ docker ps -a
 │ └── routes/
 │
 ├── docker-compose.yml
-├── diagrams/
-│ ├── vyaparsathi-architecture.jpg
-│ ├── api-flow.jpg
-│ └── docker-network.jpg
 └── README.md
 
 ```

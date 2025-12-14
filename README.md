@@ -5,6 +5,8 @@ This monorepo contains **frontend**, **backend**, **Docker**, **Nginx**, and **d
 
 ---
 
+![Backend Architecture](./Assets/system_architectural_diagram.png)
+
 ## Tech Stack
 
 ### **Backend Runtime**

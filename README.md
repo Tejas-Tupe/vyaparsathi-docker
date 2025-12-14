@@ -160,6 +160,28 @@ This multi-layer validation ensures data correctness & security.
 
 ---
 
+# Environment Configuration & Validation
+
+The backend enforces **strict environment variable validation at startup** to ensure the application runs only with correct and complete configuration.
+
+### Required Environment Variables
+- `PORT`
+- `MONGO_URI`
+- `JWT_SECRET`
+- `NODE_ENV`
+
+### Validation Strategy
+- Environment variables are validated **before server startup**
+- Missing or invalid variables cause the application to **fail fast**
+- Prevents runtime misconfiguration issues in production
+
+This approach ensures:
+- Safe deployments across environments (dev, staging, production)
+- Predictable application behavior
+- Early detection of configuration errors
+
+---
+
 ## Docker Setup
 
 The project uses Docker to containerize both the **frontend** (React/Vite + Nginx) and **backend** (Node.js + Express + MongoDB).
